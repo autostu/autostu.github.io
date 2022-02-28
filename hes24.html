@@ -241,8 +241,22 @@ top: -7.5vw;
             font-size: 3.3vw;
 
         }
+        #health-code, #check-in{
+            display: none;
+        }
     </style>
     <script>
+        function getQueryVariable(variable)
+        {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+
         var fullscreenStatus = false;
         var currentPage = 'checkin-home';
         // const _ID = document.getElementById
@@ -350,12 +364,15 @@ top: -7.5vw;
         //   changeTime();
         // }
         setTimeout(() => {
+            var to = getQueryVariable("to")
+            if(to ==='2'){
             setVaccineTime();
             changeTime();
             // fullscreen()
 			switchPage ();
 			switchPage ();
             document.body.addEventListener('click', switchPage)
+            }
         }, 1);
     </script>
 </head>
