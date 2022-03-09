@@ -18,7 +18,7 @@
 
         body{
             /*background-color:rgb(53,124,238);*/
-            background-color:rgb(67,147,242); /*macOS 数码测色器 以sGGB显示 */
+            background-color:rgb(56,137,254); /*macOS 数码测色器 以sGGB显示 */
         }
         body, html, div, video, #root {
             margin: 0;
@@ -134,7 +134,7 @@
             font-size: 3.5vw;
 
             white-space: nowrap;
-            /*font-family: Arial, Helvetica, sans-serif;*/
+            font-family:  /*"PingFang SC",*/Arial, Helvetica, sans-serif;
         }
 
         #checkin-place-container {
@@ -210,10 +210,10 @@
 
         #checkin-vaccine-container {
             position: absolute;
-            top: 112.2vw;
-            left: 10.5vw;
-            width: 39.5vw;
-            height: 29.5vw;
+            top: 112.05vw;
+            left: 10.3vw;
+            width: 39.6vw;
+            height: 29.7vw;
             z-index: 1;
             /* display: flex; */
             /* justify-content: center; */
@@ -311,7 +311,11 @@
                 document.getElementsByClassName('checkin-vaccine-time')[0].innerHTML = `${formatterDate('health-code')}`
                 document.getElementById('checkin-place-container').style.display = 'flex'
                 // btoa(encodeURIComponent(""));
-                var address = localStorage.getItem('address-company').split(";");
+                var address = localStorage.getItem('address-company');
+                if(address === null){
+                    address = ';'
+                }
+                address = address.split(";");
                 document.getElementsByClassName('checkin-place-string')[0].innerHTML = address[0]
                 document.getElementsByClassName('location-id')[0].innerHTML = address[1]
                 //currentPage = 'checkin-home'
@@ -322,7 +326,11 @@
                 // checkin-company page
                 console.log(3)
                 document.getElementById('checkin-place-container').style.display = 'flex'
-                var address = localStorage.getItem('address-home').split(";");
+                var address = localStorage.getItem('address-home');
+                if(address === null){
+                    address = ';'
+                }
+                address = address.split(";");
                 document.getElementsByClassName('checkin-place-string')[0].innerHTML = address[0]
                 document.getElementsByClassName('location-id')[0].innerHTML = address[1]
                 currentPage = 'checkin-home'
@@ -436,7 +444,7 @@
                     }
                     localStorage.setItem('address', address);
                     initSelect(address);
-                    document.getElementsByClassName("checkin-time-name")[0].innerHTML = localStorage.getItem('settings-name');
+                    //document.getElementsByClassName("checkin-time-name")[0].innerHTML = localStorage.getItem('settings-name');
                 })
 
                 document.getElementById('settings-button-save').addEventListener('click', function(event) {
@@ -446,6 +454,7 @@
                     localStorage.setItem('settings-name', document.getElementById('settings-name').value);
 
                     document.getElementById('settings-container').style.display = 'none';
+                    document.getElementsByClassName("checkin-time-name")[0].innerHTML = localStorage.getItem('settings-name');
                 });
             }
         }, 1);
@@ -497,6 +506,7 @@
                 font-size: 3vw;
                 padding-top: 0.4vw;
                 color: rgb(105,105,105);
+                font-family:  'PingFang SC',Arial, Helvetica, sans-serif;
             ">场所ID： <span class="location-id">12**554</span></div>
             <div class="inner">
                 <span class="checkin-time-name">
