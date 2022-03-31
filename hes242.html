@@ -211,8 +211,8 @@
         #checkin-vaccine-container {
             position: absolute;
             top: 112.05vw;
-            left: 10.3vw;
-            width: 39.6vw;
+            left: 10.5vw;
+            width: 39.4vw;
             height: 29.7vw;
             z-index: 1;
             /* display: flex; */
@@ -222,7 +222,7 @@
             background-size: contain;
             background-position: center; /* Center the image */
             background-repeat: no-repeat; /* Do not repeat the image */
-            background-image: linear-gradient( rgb(88, 212, 237), rgb(27,168,238));
+            /*background-image: linear-gradient( rgb(88, 212, 237), rgb(27,168,238));*/
             color:#fff;
             border-radius: 0.8vw 0 0 0.8vw;
         }
@@ -247,10 +247,70 @@
             /*left: 1.2vw;*/
             /*margin-left: 1.2vw;*/
             font-size: 3.3vw;
-
+            background-image: linear-gradient( rgb(139, 97, 219), rgb(134,91,234));
         }
         #health-code, #check-in{
             display: none;
+        }
+
+.center-img-container{
+    position: absolute;
+    top: 77vw;
+    left: 45vw;
+    width: 10vw;
+    height: 10vw;
+    overflow: hidden;
+    overflow: hidden;
+}
+        .center-img {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+        .center-img:before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 100%;
+            top: 0;
+            /*left: -150px;*/
+            overflow: hidden;
+            background: -moz-linear-gradient(
+                    left,
+                    rgba(255, 255, 255, 0) 0,
+                    rgba(255, 255, 255, 0.7) 50%,
+                    rgba(255, 255, 255, 0) 100%
+            );
+            background: -webkit-linear-gradient(
+                    left,
+                    rgba(255, 255, 255, 0) 0,
+                    rgba(255, 255, 255, 0.7) 50%,
+                    rgba(255, 255, 255, 0) 100%
+            );
+            background: -o-linear-gradient(
+                    left,
+                    rgba(255, 255, 255, 0) 0,
+                    rgba(255, 255, 255, 0.7) 50%,
+                    rgba(255, 255, 255, 0) 100%
+            );
+            transform: skewX(-45deg);
+            -webkit-transform: skewX(-45deg);
+            -moz-transform: skewX(-45deg);
+            -webkit-animation: animate-cloud 4s ease 0s infinite;
+        }
+        /*.img:hover:before {*/
+        /*    left: 150%;*/
+        /*    transition: left 1s ease 0s;*/
+        /*}*/
+        @-webkit-keyframes animate-cloud {
+            from {
+                left: -150%;
+            }
+            to {
+                left: 150%;
+            }
         }
     </style>
     <script>
@@ -346,7 +406,7 @@
             const minite = zero(date.getMinutes());
             const seconds = zero(date.getSeconds());
             if (flag === 'health-code') {
-                let yeardate = new Date(date.getTime() - 18 * 60 * 60 * 1000);
+                let yeardate = new Date(date.getTime() - 36 * 60 * 60 * 1000);
                 const year = yeardate.getFullYear()
                 const ymonth = zero(yeardate.getMonth() + 1);
                 const yday = zero(yeardate.getDate());
@@ -522,10 +582,16 @@
 
             </div>
         </div>
+        <div class="center-img-container">
+            <div class="center-img">
+
+            </div>
+        </div>
+
 
         <div id="checkin-vaccine-container">
-            <div style="text-align: center;font-size: 3.2vw;margin-top: 2.6vw;"><script>document.write(decodeURIComponent(atob("JUU2JUEwJUI4JUU5JTg1JUI4JUU2JUEzJTgwJUU2JUI1JThC")))</script></div>
-            <div style="position: relative;background-image: var(--vaccine-24-image);background-repeat: no-repeat;background-size:26.4vw;width: 26.4vw;height: 13.9vw;margin: 1vw auto 0;">
+            <div style="text-align: center;font-size: 3.2vw;margin-top: 2.6vw;display: none"><script>document.write(decodeURIComponent(atob("JUU2JUEwJUI4JUU5JTg1JUI4JUU2JUEzJTgwJUU2JUI1JThC")))</script></div>
+            <div style="position: relative;/*background-image: var(--vaccine-24-image);*/background-repeat: no-repeat;background-size:26.4vw;width: 26.4vw;height: 13.9vw;margin: 1vw auto 0;">
             </div>
             <div class="checkin-vaccine-time">
                 2022-01-04 12:59
